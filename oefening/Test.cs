@@ -26,7 +26,8 @@ namespace Tests
 		public void TestOefening2()
 		{
 			Utils.Object Obj = new Utils.Object("First.Oefenreeks1");
-			Assert.That(Obj.HasMethod(First.Program.ISPOS, typeof(float)), First.Program.ISPOS + " heeft geen float argument");
+			Obj.AssertClass();
+			Obj.AssertMethod(First.Program.ISPOS, typeof(bool), new Type[] { typeof(float)} );
 			Assert.That(Obj.Method(First.Program.ISPOS, typeof(float)).Invoke(5.67f), Is.True, "Getallen groter dan nul zijn positief");
 			Assert.That(Obj.Method(First.Program.ISPOS, typeof(float)).Invoke(-12f), Is.False, "Negatieve getallen zijn kleiner dan null");
 		}
@@ -42,7 +43,9 @@ namespace Tests
 		public void TestOefening4()
 		{
 			Utils.Object Obj = new Utils.Object("First.Oefenreeks1");
-			Assert.That(Obj.HasMethod(First.Program.OPPRH, new Type[] { typeof(int), typeof(int) }), Is.True, "De functie OppervlakRechtoek(int, int) bestaat niet");
+			Obj.AssertClass();
+			Obj.AssertMethod(First.Program.OPPRH, typeof(int), new Type[] { typeof(int), typeof(int) });
+
 			Assert.That(Obj.Method(First.Program.OPPRH, new Type[] { typeof(int), typeof(int) }).Invoke(new object[] { 4, 5 }), Is.EqualTo(20), "Foute Berekening");
 			Assert.That(Obj.Method(First.Program.OPPRH, new Type[] { typeof(int), typeof(int) }).Invoke(new object[] { 14, 10 }), Is.EqualTo(140), "Foute Berekening");
 		}
@@ -51,7 +54,9 @@ namespace Tests
 		public void TestOefening5()
 		{
 			Utils.Object Obj = new Utils.Object("First.Oefenreeks1");
-			Assert.That(Obj.HasMethod(First.Program.OPPRH, new Type[] { typeof(float), typeof(float) }), Is.True, "De functie OppervlakRechtoek(int, int) bestaat niet");
+			Obj.AssertClass();
+			Obj.AssertMethod(First.Program.OPPRH, typeof(float), new Type[] { typeof(float), typeof(float) });
+
 			Assert.That(Obj.Method(First.Program.OPPRH, new Type[] { typeof(float), typeof(float) }).Invoke(new object[] { 4.1f, 5f }), Is.EqualTo(20.5f).Within(.0005), "Foute Berekening");
 			Assert.That(Obj.Method(First.Program.OPPRH, new Type[] { typeof(float), typeof(float) }).Invoke(new object[] { 1.1f, 3.4f }), Is.EqualTo(3.74f).Within(.0005), "Foute Berekening");
 		}
@@ -93,7 +98,8 @@ namespace Tests
 		public void TestOefening9()
 		{
 			Utils.Object Obj = new Utils.Object("First.Oefenreeks1");
-			Assert.That(Obj.HasMethod(First.Program.INCR, new Type[] { typeof(int[]), typeof(int) }), "Increment(int[], int) bestaat niet");
+			Obj.AssertClass();
+			Obj.AssertMethod(First.Program.INCR, typeof(void), new Type[] { typeof(int[]), typeof(int) });
 
 			int[] arr = { 5, 6, 7, 8 };
 			int[] arr2 = { 8, 9, 10, 11 };
@@ -105,7 +111,8 @@ namespace Tests
 		public void TestOefening10()
 		{
 			Utils.Object Obj = new Utils.Object("First.Oefenreeks1");
-			Assert.That(Obj.HasMethod(First.Program.DECR, new Type[] { typeof(int[]), typeof(int) }), "Decrement(int[], int) bestaat niet");
+			Obj.AssertClass();
+			Obj.AssertMethod(First.Program.DECR, typeof(void), new Type[] { typeof(int[]), typeof(int) });
 
 			int[] arr = { 5, 6, 7, 8 };
 			int[] arr2 = { 0, 1, 2, 3 };
