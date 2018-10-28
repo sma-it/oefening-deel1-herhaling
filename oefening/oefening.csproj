@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Oefeningen\Oefenreeks1.cs" />
+    <Compile Include="Oefeningen\Oefenreeks2.cs" />
     <Compile Include="Utils\Menu.cs" />
     <Compile Include="Utils\Method.cs" />
     <Compile Include="Utils\Object.cs" />
